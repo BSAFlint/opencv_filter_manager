@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="SimpleFilterBuilder.Controls.TableView.TableViewCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SimpleFilterBuilder.Controls.TableView"
+             xmlns:control ="clr-namespace:SimpleFilterBuilder.Controls.SliderPlus"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <GroupBox>
+        <GroupBox.Header>
+            <Label Content="{Binding Title}"/>
+        </GroupBox.Header>
+        <StackPanel>
+            <control:SliderPlus DataContext="{Binding FloatSlider}"/>
+            <ItemsControl ItemsSource="{Binding TextBoxTable}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="{Binding TableRows}" Columns="{Binding TableColumns}" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </GroupBox>
+</UserControl>

@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="SimpleFilterBuilder.Controls.FilterPropertyCtrl.PropertyCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SimpleFilterBuilder.Controls.FilterPropertyCtrl"
+             xmlns:conv="clr-namespace:SimpleFilterBuilder.Common"
+             mc:Ignorable="d" 
+             xmlns:control ="clr-namespace:SimpleFilterBuilder.Controls.SliderPlus"
+             xmlns:control2 ="clr-namespace:SimpleFilterBuilder.Controls.FileManager"
+             xmlns:control3 ="clr-namespace:SimpleFilterBuilder.Controls.TableView"
+             d:DesignHeight="50" d:DesignWidth="400">
+    <Grid>
+
+        <Grid Visibility="{Binding IntSliderShow}">
+            <control:SliderPlus DataContext="{Binding IntSlider}"/>
+        </Grid>
+
+        <Grid Visibility="{Binding FloatSliderShow}">
+            <control:SliderPlus DataContext="{Binding FloatSlider}"/>
+        </Grid>
+
+        <Grid Visibility="{Binding ComboBoxShow}" Height="30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="{Binding EnumNameStr}" Height="30"/>
+            <ComboBox Grid.Column="1" ItemsSource="{Binding Enums}" SelectedItem="{Binding SelectEnum}" Height="30"/>
+        </Grid>
+
+        <Grid Visibility="{Binding FileManagerShow}">
+            <control2:FileManagerCtrl DataContext="{Binding FileManagerCtrl}"/>
+        </Grid>
+
+        <Grid Visibility="{Binding TableViewShow}">
+            <control3:TableViewCtrl DataContext="{Binding TableViewCtrl}"/>
+        </Grid>
+
+
+    </Grid>
+</UserControl>

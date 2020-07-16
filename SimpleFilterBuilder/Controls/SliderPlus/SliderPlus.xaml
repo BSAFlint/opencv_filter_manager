@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="SimpleFilterBuilder.Controls.SliderPlus.SliderPlus"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SimpleFilterBuilder.Controls.SliderPlus"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Height="30" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Label Width="75" Content="{Binding HeadText}"/>
+        <TextBox Grid.Column="1" Grid.Row="0" 
+                         Text="{Binding SliderVal, UpdateSourceTrigger=PropertyChanged}"/>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Content="+" Command="{Binding Inc}"/>
+            <Button Grid.Row="1" Content="-" Command="{Binding Dec}"/>
+        </Grid>
+
+        <Slider Grid.Column="3" Margin="10,0"
+                                Value="{Binding SliderVal}"
+                                Orientation="Horizontal"
+                                Minimum="{Binding MinVal}" 
+                                Maximum="{Binding MaxVal}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Stretch"/>
+
+    </Grid>
+</UserControl>
